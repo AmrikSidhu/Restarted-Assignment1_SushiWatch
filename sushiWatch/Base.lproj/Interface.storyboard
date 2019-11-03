@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="15400" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+    <device id="watch38"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="15400"/>
+    </dependencies>
+    <scenes>
+        <!--Interface Controller-->
+        <scene sceneID="aou-V4-d1y">
+            <objects>
+                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="sushiWatch" customModuleProvider="target">
+                    <items>
+                        <button width="136" height="19" alignment="center" verticalAlignment="bottom" title="==&gt;" id="Rda-64-0hk">
+                            <connections>
+                                <action selector="btnRightClicked" destination="AgC-eL-Hgc" id="Ewg-7U-Cfy"/>
+                            </connections>
+                        </button>
+                        <button width="136" height="19" alignment="center" verticalAlignment="bottom" title="&lt;==" id="LT3-2A-zzi">
+                            <connections>
+                                <action selector="btnLeftClicked" destination="AgC-eL-Hgc" id="9RS-sj-KgB"/>
+                            </connections>
+                        </button>
+                    </items>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="129" y="158"/>
+        </scene>
+    </scenes>
+</document>

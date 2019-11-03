@@ -44,6 +44,10 @@ class GameScene: SKScene, WCSessionDelegate {
     
     var lives = 5
     var score = 0
+    let secondsLabel = SKLabelNode(text: "20")
+    var timerImage:SKSpriteNode!
+    var counter = 1
+    var timeRemaining = 25
     
     
     func spawnSushi() {
@@ -108,18 +112,31 @@ class GameScene: SKScene, WCSessionDelegate {
         self.buildTower()
         
         // Game labels
-        self.scoreLabel.position.x = 100
-        self.scoreLabel.position.y = size.height - 100
+        self.scoreLabel.position.x = 90
+        self.scoreLabel.position.y = size.height - 90
         self.scoreLabel.fontName = "Avenir"
-        self.scoreLabel.fontSize = 40
+        self.scoreLabel.fontSize = 20
         addChild(scoreLabel)
         
         // Life label
-        self.lifeLabel.position.x = 100
-        self.lifeLabel.position.y = size.height - 150
+        self.lifeLabel.position.x = 90
+        self.lifeLabel.position.y = size.height - 140
         self.lifeLabel.fontName = "Avenir"
-        self.lifeLabel.fontSize = 40
+        self.lifeLabel.fontSize = 20
         addChild(lifeLabel)
+        
+        
+         self.timerImage = SKSpriteNode(imageNamed: "timeBarRed")
+                 self.timerImage.position = CGPoint(x: self.size.width/2 + 50, y: self.size.height - 80)
+                 self.timerImage.zPosition = 0
+                 addChild(timerImage)
+         
+        self.secondsLabel.position = CGPoint(x: self.timerImage.size.width + 155, y: self.size.height - 90)
+                 self.secondsLabel.fontName = "Avenir"
+                 self.secondsLabel.fontSize = 20
+                 self.secondsLabel.zPosition = 2
+                 self.secondsLabel.fontColor = UIColor.white
+                 addChild(secondsLabel)
     }
     
     func buildTower() {
@@ -130,6 +147,35 @@ class GameScene: SKScene, WCSessionDelegate {
     
     
     override func update(_ currentTime: TimeInterval) {
+        
+        self.counter = self.counter + 1
+                  if (self.counter%60 == 0)&&(self.timeRemaining > 0) {
+                      self.timeRemaining = self.timeRemaining - 1
+                      print("Seconds: \(self.timeRemaining)")
+                      self.secondsLabel.text = "\(self.timeRemaining)"
+                      self.timerImage.size.width = self.timerImage.size.width - 8
+                    self.secondsLabel.position.x = self.timerImage.size.width + 155 - 8
+                      self.timerImage.position.x = self.timerImage.position.x - 4
+                    
+                    self.timeNotificationsToWatch()
+          
+                  }
+    }
+    
+     public func timeNotificationsToWatch(){
+      
+              if ((self.timeRemaining == 15)||(self.timeRemaining == 10)||(self.timeRemaining == 5)){
+                  if (WCSession.default.isReachable) {
+                      print("Watch reachable")
+                      let message = ["secondsRemaining": self.timeRemaining]
+                      WCSession.default.sendMessage(message, replyHandler: nil)
+                      // output a debug message to the console
+                      print("sent time remaining to watch")
+                  }
+                  else {
+                      print("watch not reachable!")
+                  }
+              }
     }
     
     public func movetheCat(){

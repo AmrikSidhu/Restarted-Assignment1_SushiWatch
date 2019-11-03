@@ -15,8 +15,6 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
         
     }
-    
-
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
         

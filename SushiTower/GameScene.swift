@@ -30,8 +30,6 @@ class GameScene: SKScene, WCSessionDelegate {
             self.movetheCat()
         }
     }
-    
-    
     let cat = SKSpriteNode(imageNamed: "character1")
     let sushiBase = SKSpriteNode(imageNamed:"roll")
 

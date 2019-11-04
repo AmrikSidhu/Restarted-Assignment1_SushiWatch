@@ -16,6 +16,7 @@ class GameScene: SKScene, WCSessionDelegate {
         
     }
     
+    
     func sessionDidBecomeInactive(_ session: WCSession) {
         
     }
@@ -25,10 +26,25 @@ class GameScene: SKScene, WCSessionDelegate {
     }
     func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
         DispatchQueue.main.async {
-            print("Message recieved from Watch")
-            self.movingTo = message["movingTo"] as! String
-            self.movetheCat()
+//            print("Message recieved from Watch")
+//            self.movingTo = message["movingTo"] as! String
+            
+             if (message.keys.contains("movingTo")){
+                            print("Message recieved from Watch")
+                            //set move direction to left/right based on message recieved and call function
+                            self.movingTo = message["movingTo"] as! String
+                            self.movetheCat()
+                        }
+            if (message.keys.contains("boosterGet")){
+                self.timeRemaining = self.timeRemaining + 10
+                //update timeBar width and position
+                self.timerImage.size.width = self.timerImage.size.width + 100
+                self.timerImage.position.x = self.timerImage.position.x + 50
+            }
+            
         }
+        
+        
     }
     let cat = SKSpriteNode(imageNamed: "character1")
     let sushiBase = SKSpriteNode(imageNamed:"roll")
@@ -37,7 +53,7 @@ class GameScene: SKScene, WCSessionDelegate {
     var sushiTower:[SushiPiece] = []
     let SUSHI_PIECE_GAP:CGFloat = 80
     var catPosition = "left"
-    
+        
     // Show life and score labels
     let lifeLabel = SKLabelNode(text:"Lives: ")
     let scoreLabel = SKLabelNode(text:"Score: ")
@@ -48,7 +64,10 @@ class GameScene: SKScene, WCSessionDelegate {
     var timerImage:SKSpriteNode!
     var counter = 1
     var timeRemaining = 25
-    
+    var boosterTime = 10
+    var powerUp = [String]()
+    var  powerUpLimit = 1
+
     
     func spawnSushi() {
         
@@ -158,6 +177,7 @@ class GameScene: SKScene, WCSessionDelegate {
                       self.timerImage.position.x = self.timerImage.position.x - 4
                     
                     self.timeNotificationsToWatch()
+                   
           
                   }
     }
@@ -167,7 +187,7 @@ class GameScene: SKScene, WCSessionDelegate {
         if ((self.timeRemaining == 15)||(self.timeRemaining == 10)||(self.timeRemaining == 5) || (self.timeRemaining == 0)){
                   if (WCSession.default.isReachable) {
                       print("Watch reachable")
-                      let message = ["secondsRemaining": self.timeRemaining]
+                    let message = ["secondsRemaining": self.timeRemaining , "booster" : self.boosterTime]
                       WCSession.default.sendMessage(message, replyHandler: nil)
                       // output a debug message to the console
                       print("sent time remaining to watch")
@@ -177,6 +197,7 @@ class GameScene: SKScene, WCSessionDelegate {
                   }
               }
     }
+
     
     public func movetheCat(){
     if self.movingTo == "left" {

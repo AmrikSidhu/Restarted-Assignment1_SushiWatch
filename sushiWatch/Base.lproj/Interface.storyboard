@@ -16,11 +16,22 @@
                                 <action selector="btnRightClicked" destination="AgC-eL-Hgc" id="Q9v-al-G9F"/>
                             </connections>
                         </button>
-                        <label width="89" height="27" alignment="center" text="Game Over!" id="jGa-2j-qDt">
+                        <label width="70" height="18" alignment="center" text="Game Over!" id="jGa-2j-qDt">
                             <color key="textColor" red="0.93088163859999995" green="0.37457838510800406" blue="0.57843716661404321" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <fontDescription key="font" type="system" pointSize="12"/>
                         </label>
                         <label alignment="right" id="Z22-I5-KVX"/>
-                        <label alignment="left" text="Label" id="Bbc-Dz-tH5"/>
+                        <label alignment="left" id="Bbc-Dz-tH5"/>
+                        <button width="27" height="20" alignment="center" title="||" id="u9j-hl-wRH">
+                            <connections>
+                                <action selector="btnPause" destination="AgC-eL-Hgc" id="dly-l7-EQA"/>
+                            </connections>
+                        </button>
+                        <button width="26" height="22" alignment="center" title="&gt;" id="cLL-6E-Qrb">
+                            <connections>
+                                <action selector="btnResume" destination="AgC-eL-Hgc" id="nMC-An-kZ5"/>
+                            </connections>
+                        </button>
                         <button width="28" height="23" alignment="left" title="√" id="DYM-6L-BEA">
                             <connections>
                                 <action selector="btnClickBoost" destination="AgC-eL-Hgc" id="hMd-wu-Uvg"/>
@@ -39,7 +50,7 @@
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="129" y="158"/>
+            <point key="canvasLocation" x="31" y="126"/>
         </scene>
     </scenes>
 </document>

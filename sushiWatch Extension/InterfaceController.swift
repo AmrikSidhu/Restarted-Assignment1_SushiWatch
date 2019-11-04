@@ -90,6 +90,34 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
             }
 
     
+    @IBAction func btnResume() {
+        
+        if (WCSession.default.isReachable) {
+            print("Phone reachable")
+            let message = ["resume": "yes"]
+            WCSession.default.sendMessage(message, replyHandler: nil)
+            // output a debug message to the console
+            print("sent pause request to phone")
+            //self.lblGameState.setText("Paused! Swipe to Resume")
+        }
+        else {
+            print("WATCH: Cannot reach phone")
+        }
+    }
+    @IBAction func btnPause() {
+        
+        if (WCSession.default.isReachable) {
+                    print("Phone reachable")
+                    let message = ["pause": "yes"]
+                    WCSession.default.sendMessage(message, replyHandler: nil)
+                    // output a debug message to the console
+                    print("sent pause request to phone")
+                    //self.lblGameState.setText("Paused! Swipe to Resume")
+                }
+                else {
+                    print("WATCH: Cannot reach phone")
+                }
+    }
     @IBAction func btnRightClicked() {
         if (WCSession.default.isReachable) {
             print("phone reachable")
@@ -102,6 +130,8 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
             print("WATCH: Cannot reach phone")
         }
     }
+    
+   
     
     @IBAction func btnClickBoost() {
         if(boosterLimit != 0)

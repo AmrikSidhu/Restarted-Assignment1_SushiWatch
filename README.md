@@ -1,7 +1,6 @@
-# Sushi Tower - a clone of Timberman
+## Sushi Watch : Assignment 1
+## Platform : iOS.
 
-Timberman demo:
-
-This project is derived heavily from the `Learn to Clone Timberman with SpriteKit and Swift 3` tutorial found on  [Makeschool.com](https://www.makeschool.com/academy/track/learn-to-clone-timberman-with-spritekit-and-swift-3)
-
-![](screenshots/sushiTower.gif)
+Student Name  | Student ID
+------------- | -------------
+Amrik Singh Sidhu  | C0742318

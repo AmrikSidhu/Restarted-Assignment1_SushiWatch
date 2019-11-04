@@ -18,6 +18,9 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
         
     }
     
+    @IBOutlet weak var lblGameOver: WKInterfaceLabel!
+    
+    
     
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
@@ -38,6 +41,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
     override func willActivate() {
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
+        self.lblGameOver.setHidden(true)
     }
     
     override func didDeactivate() {
@@ -50,6 +54,19 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
                 //messageLabel.setText(messageBody)
                 self.timer = timerMessage
                 print("Status message from Phone = \(timerMessage)")
+        
+        let timeIsZero = timerMessage
+        
+        if (timeIsZero == 0)
+        {
+            self.lblGameOver.setHidden(false)
+            self.lbltimerForWatch.setHidden(true)
+            self.btnLeftClicked.setHidden(true)
+        }
+        else
+        {
+            self.lbltimerForWatch.setText("seconds: \(timeIsZero)")
+        }
             }
     
     
@@ -65,6 +82,9 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
             print("WATCH: Cannot reach phone")
         }
     }
+    
+    @IBOutlet weak var lbltimerForWatch: WKInterfaceLabel!
+    
     
     @IBAction func btnLeftClicked() {
         if (WCSession.default.isReachable) {

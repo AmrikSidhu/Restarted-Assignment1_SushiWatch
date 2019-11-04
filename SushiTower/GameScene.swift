@@ -164,7 +164,7 @@ class GameScene: SKScene, WCSessionDelegate {
     
      public func timeNotificationsToWatch(){
       
-              if ((self.timeRemaining == 15)||(self.timeRemaining == 10)||(self.timeRemaining == 5)){
+        if ((self.timeRemaining == 15)||(self.timeRemaining == 10)||(self.timeRemaining == 5) || (self.timeRemaining == 0)){
                   if (WCSession.default.isReachable) {
                       print("Watch reachable")
                       let message = ["secondsRemaining": self.timeRemaining]

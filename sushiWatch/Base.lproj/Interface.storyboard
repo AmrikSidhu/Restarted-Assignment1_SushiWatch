@@ -13,15 +13,23 @@
                     <items>
                         <button width="136" height="19" alignment="center" verticalAlignment="bottom" title="==&gt;" id="Rda-64-0hk">
                             <connections>
-                                <action selector="btnRightClicked" destination="AgC-eL-Hgc" id="Ewg-7U-Cfy"/>
+                                <action selector="btnRightClicked" destination="AgC-eL-Hgc" id="Q9v-al-G9F"/>
                             </connections>
                         </button>
+                        <label width="89" height="27" alignment="center" text="Game Over!" id="jGa-2j-qDt">
+                            <color key="textColor" red="0.93088163859999995" green="0.37457838510800406" blue="0.57843716661404321" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </label>
+                        <label alignment="right" id="Z22-I5-KVX"/>
                         <button width="136" height="19" alignment="center" verticalAlignment="bottom" title="&lt;==" id="LT3-2A-zzi">
                             <connections>
-                                <action selector="btnLeftClicked" destination="AgC-eL-Hgc" id="9RS-sj-KgB"/>
+                                <action selector="btnLeftClicked" destination="AgC-eL-Hgc" id="Tll-zv-xo7"/>
                             </connections>
                         </button>
                     </items>
+                    <connections>
+                        <outlet property="lblGameOver" destination="jGa-2j-qDt" id="QFi-41-5bj"/>
+                        <outlet property="lbltimerForWatch" destination="Z22-I5-KVX" id="uUX-B1-LEr"/>
+                    </connections>
                 </controller>
             </objects>
             <point key="canvasLocation" x="129" y="158"/>
